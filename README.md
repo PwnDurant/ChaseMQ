@@ -1,2 +1,2 @@
 # ChaseMQ
-Java 模拟 RabbitMQ 
+Java 模拟实现 RabbitMQ 
