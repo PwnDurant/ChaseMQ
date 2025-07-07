@@ -1,6 +1,6 @@
 package com.chase.mq.mqserver.core;
 
-import com.chase.mq.common.MQException;
+import com.chase.mq.common.server.MQException;
 
 /**
  * 用来实现交换机的转发规则，并验证 bindingKey 是否合法

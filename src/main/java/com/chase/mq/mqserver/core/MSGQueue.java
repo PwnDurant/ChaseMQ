@@ -1,6 +1,6 @@
 package com.chase.mq.mqserver.core;
 
-import com.chase.mq.common.ConsumerEnv;
+import com.chase.mq.common.server.ConsumerEnv;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

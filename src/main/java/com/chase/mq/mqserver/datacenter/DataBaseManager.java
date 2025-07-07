@@ -2,7 +2,7 @@ package com.chase.mq.mqserver.datacenter;
 
 
 import com.chase.mq.MqApplication;
-import com.chase.mq.common.MQException;
+import com.chase.mq.common.server.MQException;
 import com.chase.mq.mqserver.core.Binding;
 import com.chase.mq.mqserver.core.Exchange;
 import com.chase.mq.mqserver.core.ExchangeType;

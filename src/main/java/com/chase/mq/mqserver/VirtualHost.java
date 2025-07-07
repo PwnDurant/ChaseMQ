@@ -1,7 +1,7 @@
 package com.chase.mq.mqserver;
 
-import com.chase.mq.common.Consumer;
-import com.chase.mq.common.MQException;
+import com.chase.mq.common.server.Consumer;
+import com.chase.mq.common.server.MQException;
 import com.chase.mq.mqserver.core.*;
 import com.chase.mq.mqserver.datacenter.DiskDataCenter;
 import com.chase.mq.mqserver.datacenter.MemoryDataCenter;
@@ -43,7 +43,7 @@ public class VirtualHost {
     /**
      * 消费核心类
      */
-    private final ConsumerManager consumerManager = new ConsumerManager();
+    private final ConsumerManager consumerManager = new ConsumerManager(this);
 
     /**
      * 操作交换机的锁对象
@@ -109,7 +109,7 @@ public class VirtualHost {
             return true;
         }catch (Exception e){
             System.out.println("[VirtualHost] 交换机创建失败! exchangeName=" + exchangeName +
-                    "错误信息：" + e.getMessage());
+                    " 错误信息：" + e.getMessage());
             return false;
         }
     }

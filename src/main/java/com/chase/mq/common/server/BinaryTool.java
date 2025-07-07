@@ -1,4 +1,4 @@
-package com.chase.mq.common;
+package com.chase.mq.common.server;
 
 
 import com.chase.mq.mqserver.core.Message;
@@ -37,7 +37,7 @@ public class BinaryTool {
      * @param data 需要被反序列化的字节数组
      * @return 返回指定的对象
      */
-    public static Message fromBytes(byte[] data) throws IOException, ClassNotFoundException {
+    public static Object fromBytes(byte[] data) throws IOException, ClassNotFoundException {
         Message message = null;
         try (ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(data)){
             try(ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream)){

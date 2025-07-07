@@ -1,8 +1,8 @@
 package com.chase.mq.mqserver.datacenter;
 
 
-import com.chase.mq.common.BinaryTool;
-import com.chase.mq.common.MQException;
+import com.chase.mq.common.server.BinaryTool;
+import com.chase.mq.common.server.MQException;
 import com.chase.mq.mqserver.core.MSGQueue;
 import com.chase.mq.mqserver.core.Message;
 import lombok.AllArgsConstructor;
@@ -194,7 +194,7 @@ public class MessageFileManager {
                 byte[] bufMessage = new byte[(int) (message.getOffsetEnd() - message.getOffsetBeg())];
                 randomAccessFile.seek(message.getOffsetBeg());
                 randomAccessFile.read(bufMessage);
-                Message diskMessage = BinaryTool.fromBytes(bufMessage);
+                Message diskMessage = (Message) BinaryTool.fromBytes(bufMessage);
 //            设置无效属性之后再重新写入文件,此处不需要再给参数中的 message 设置无效属性，这里的对象代表的是内存中的对象，之后会被销毁
                 diskMessage.setIsValid((byte) 0x0);
                 byte[] DestBuf = BinaryTool.toBytes(diskMessage);
@@ -234,7 +234,7 @@ public class MessageFileManager {
                     if(messageSize != actualSize)
                         throw new MQException("[MessageFileManager]文件格式错误！queueName = "+queueName+" 可能原因：文件不完整、网络中断、Socket 半关闭等等");
 //                    反序列化并判断是否有效
-                    Message diskMessage = BinaryTool.fromBytes(buffer);
+                    Message diskMessage = (Message) BinaryTool.fromBytes(buffer);
                     if(diskMessage.getIsValid() != 0x1){
 //                        如果是无效数据，直接跳过，并要更新 offset
                         currentOffset += (4 + messageSize);

@@ -1,7 +1,7 @@
 package com.chase.mq.mqserver.datacenter;
 
 
-import com.chase.mq.common.MQException;
+import com.chase.mq.common.server.MQException;
 import com.chase.mq.mqserver.core.Binding;
 import com.chase.mq.mqserver.core.Exchange;
 import com.chase.mq.mqserver.core.MSGQueue;
@@ -81,10 +81,7 @@ public class MemoryDataCenter {
      * @return 如果存在则返回指定交换机
      */
     public Exchange getExchange(String exchangeName) {
-        Exchange exchange = exchangeMap.get(exchangeName);
-        if(exchange == null)
-            throw new MQException("[MemoryDataCenter] 指定交换机不存在！exchangeName = "+ exchangeName);
-        return exchange;
+        return exchangeMap.get(exchangeName);
     }
 
     /**
@@ -120,8 +117,6 @@ public class MemoryDataCenter {
      * @return 返回指定队列
      */
     public MSGQueue getQueue(String queueName){
-        if(queueMap.get(queueName) == null)
-            throw new MQException("[MemoryDataCenter] 指定队列不存在！queueName = " + queueName);
         return queueMap.get(queueName);
     }
 

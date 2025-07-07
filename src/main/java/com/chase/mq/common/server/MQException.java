@@ -1,4 +1,4 @@
-package com.chase.mq.common;
+package com.chase.mq.common.server;
 
 
 /**

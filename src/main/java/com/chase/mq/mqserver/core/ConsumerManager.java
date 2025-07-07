@@ -1,9 +1,9 @@
 package com.chase.mq.mqserver.core;
 
 
-import com.chase.mq.common.Consumer;
-import com.chase.mq.common.ConsumerEnv;
-import com.chase.mq.common.MQException;
+import com.chase.mq.common.server.Consumer;
+import com.chase.mq.common.server.ConsumerEnv;
+import com.chase.mq.common.server.MQException;
 import com.chase.mq.mqserver.VirtualHost;
 
 import java.util.concurrent.BlockingQueue;

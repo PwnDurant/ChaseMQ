@@ -1,4 +1,4 @@
-package com.chase.mq.common;
+package com.chase.mq.common.server;
 
 import com.chase.mq.mqserver.core.BasicProperties;
 
