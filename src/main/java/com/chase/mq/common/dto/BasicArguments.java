@@ -2,6 +2,8 @@ package com.chase.mq.common.dto;
 
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
@@ -9,7 +11,8 @@ import java.io.Serializable;
  * 使用这个类表示方法的公共参数/辅助的字段
  * 后续每个方法又会又一些不同的参数，不同的参数再分别使用不同的子类来表示
  */
-@Data
+@Setter
+@Getter
 public class BasicArguments implements Serializable {
 
     /**

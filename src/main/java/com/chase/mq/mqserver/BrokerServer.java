@@ -69,7 +69,7 @@ public class BrokerServer {
                 Socket clientSocket = serverSocket.accept();
 //                把处理连接的逻辑放在这个线程池中
                 System.out.println("[BrokerServer] 接收到请求");
-                executorService.submit(() ->{
+                executorService.submit(() -> {
                     processConnection(clientSocket);
                 });
             }
@@ -131,12 +131,14 @@ public class BrokerServer {
     /**
      * 读取请求并指定长度
      */
-    private Request readRequest(DataInputStream dataInputStream) throws IOException {
+    private Request readRequest(DataInputStream dataInputStream) throws IOException, ClassNotFoundException {
         System.out.println("[BrokerServer] 读取到请求");
         Request request = new Request();
         request.setType(dataInputStream.readInt());
         request.setLength(dataInputStream.readInt());
         byte[] payload = new byte[request.getLength()];
+        Object o = BinaryTool.fromBytes(payload);
+        System.out.println("[BrokerServer] payload = " + o.toString());
         int n = dataInputStream.read(payload);
         if(n != request.getLength())
             throw new IOException("[BrokerServer] 读取请求格式出错！");

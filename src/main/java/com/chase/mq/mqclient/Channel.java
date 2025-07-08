@@ -68,8 +68,10 @@ public class Channel {
         request.setPayload(payload);
 //        构造出完整请求后就可以发送请求了
         connection.writeRequest(request);
-//        等嗲服务器响应
+        System.out.println("[Channel] 请求发送成功！");
+//        等待服务器响应
         BasicReturns basicReturns = waitResult(basicArguments.getRid());
+        System.out.println("[Channel] 等待响应成功！");
         return basicReturns.isOk();
     }
 
@@ -88,7 +90,7 @@ public class Channel {
         while((basicReturns = basicReturnsMap.get(rid)) == null){
 //            如果查询结果为 null 此时就需要进行阻塞等待
             synchronized (this){
-                System.out.println("[Channel] 没有结果");
+                System.out.println("[Channel] 还有收到结果！");
                 try{
                     wait();
                 }catch (InterruptedException e){

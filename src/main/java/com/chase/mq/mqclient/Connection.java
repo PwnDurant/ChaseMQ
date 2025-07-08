@@ -182,6 +182,7 @@ public class Connection {
         if (!ok) {
             // 服务器这里创建失败了!! 整个这次创建 channel 操作不顺利!!
             // 把刚才已经加入 hash 表的键值对, 再删了.
+            System.out.println("[Connection] 创建 channel 失败！");
             channelMap.remove(channelId);
             return null;
         }
